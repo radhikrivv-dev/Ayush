@@ -1,1 +1,620 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#000000">
+
+<title>Suraz × Ursha | Legendary Duo</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #000;
+  color: white;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+.screen {
+  display: none;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+}
+
+/* WELCOME */
+
+#welcome {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+  background:
+    radial-gradient(circle at top, #68202c, transparent 50%),
+    linear-gradient(140deg,#080817,#211020,#080817);
+}
+
+.card {
+  width: 100%;
+  max-width: 500px;
+  padding: 35px 20px;
+  border: 1px solid #ffb34c55;
+  border-radius: 25px;
+  background: #ffffff0d;
+  box-shadow: 0 0 40px #ff542c30;
+}
+
+.heart {
+  font-size: 60px;
+  animation: beat 1.2s infinite;
+}
+
+h1 {
+  color: #ffd08a;
+  font-size: 32px;
+  margin: 20px 0;
+}
+
+p {
+  color: #e8dfe8;
+  line-height: 1.8;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+button {
+  padding: 14px 24px;
+  border: 1px solid #ffba5c;
+  border-radius: 40px;
+  color: white;
+  background: linear-gradient(135deg,#b62924,#ff861e);
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+/* PHOTOS */
+
+#photoScreen {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 0;
+  background: black;
+}
+
+.fireTitle {
+  text-align: center;
+  color: #ffb52e;
+  font-weight: 1000;
+  letter-spacing: 3px;
+  font-size: clamp(25px,7vw,43px);
+  text-shadow: 0 0 10px red, 0 0 25px #ff6900;
+  animation: glow 1.5s infinite alternate;
+}
+
+#memoryPhoto {
+  width: 100%;
+  height: 65%;
+  object-fit: contain;
+  animation: photoFade .8s ease;
+}
+
+.photoBottom {
+  text-align: center;
+  padding: 5px;
+}
+
+.photoBottom h2 {
+  color: #ffca55;
+  font-size: clamp(18px,5vw,28px);
+  margin-bottom: 8px;
+}
+
+/* VIDEO */
+
+#videoScreen {
+  display: none;
+  background: radial-gradient(circle,#241020,#000);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 15px;
+}
+
+#videoScreen h2 {
+  color: #ffba68;
+  margin-bottom: 18px;
+}
+
+#myVideo {
+  width: 100%;
+  max-height: 70vh;
+  border: 2px solid #ff762c;
+  border-radius: 15px;
+  background: black;
+}
+
+#soundButton {
+  margin-top: 15px;
+  background: linear-gradient(135deg,#9c30ff,#e33d83);
+}
+
+/* MOVIE END CREDITS */
+
+#creditsScreen {
+  display: none;
+  position: relative;
+  overflow: hidden;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background:
+    radial-gradient(ellipse at center,#21100d 0%,#080608 45%,#000 100%);
+}
+
+/* Background glow */
+
+.creditsGlow {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background: #ff5b0d18;
+  filter: blur(75px);
+  top: 35%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Scrolling credits container */
+
+.creditsTrack {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  text-align: center;
+  animation: creditsRoll 18s linear forwards;
+  padding: 0 15px;
+}
+
+.smallTitle {
+  color: #d9b78a;
+  font-size: 13px;
+  letter-spacing: 7px;
+  margin-bottom: 35px;
+}
+
+.crown {
+  font-size: 65px;
+  margin-bottom: 25px;
+  filter: drop-shadow(0 0 18px #ffb52e);
+}
+
+.mainNames {
+  font-size: clamp(39px,10vw,68px);
+  font-weight: 1000;
+  letter-spacing: 2px;
+  line-height: 1.25;
+  background: linear-gradient(
+    90deg,
+    #fff2b5,
+    #ff9e2f,
+    #ffffff,
+    #ffbb4a
+  );
+  background-size: 250%;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: goldShine 4s linear infinite;
+  text-shadow: 0 0 25px #ff7b1830;
+}
+
+.ayush {
+  color: #ff5748;
+  font-size: 27px;
+  letter-spacing: 9px;
+  margin-top: 15px;
+  text-shadow: 0 0 20px #ff261b;
+}
+
+.line {
+  width: 75%;
+  height: 2px;
+  margin: 45px auto;
+  background: linear-gradient(
+    90deg,transparent,#ffba4b,transparent
+  );
+}
+
+.duoTitle {
+  font-size: clamp(25px,6vw,39px);
+  font-weight: 1000;
+  color: #fff;
+  letter-spacing: 2px;
+  line-height: 1.5;
+  text-shadow: 0 0 15px #ff6500;
+}
+
+.duoSub {
+  color: #ffb96c;
+  letter-spacing: 4px;
+  font-size: 15px;
+  margin-top: 25px;
+}
+
+.flag {
+  font-size: 45px;
+  margin-top: 40px;
+}
+
+.friendship {
+  font-size: 18px;
+  color: #e8c5a0;
+  letter-spacing: 3px;
+  margin-top: 30px;
+}
+
+.endLabel {
+  font-size: 30px;
+  color: #ffbd51;
+  font-weight: bold;
+  letter-spacing: 8px;
+  margin-top: 100px;
+  text-shadow: 0 0 25px #ff5d17;
+}
+
+/* Final end screen */
+
+#finalEnd {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: #000;
+  animation: fadeIn 3s ease;
+}
+
+#finalEnd h2 {
+  font-size: clamp(38px,10vw,65px);
+  color: #ffc45d;
+  letter-spacing: 7px;
+  text-shadow: 0 0 25px #ff6500;
+}
+
+#finalEnd p {
+  margin-top: 20px;
+  letter-spacing: 4px;
+}
+
+#again {
+  margin-top: 30px;
+  background: linear-gradient(135deg,#8e2525,#ed8b2d);
+}
+
+@keyframes beat {
+  50% { transform: scale(1.2); }
+}
+
+@keyframes glow {
+  from { filter: brightness(.8); }
+  to { filter: brightness(1.5); }
+}
+
+@keyframes photoFade {
+  from {opacity:0;}
+  to {opacity:1;}
+}
+
+@keyframes goldShine {
+  to {background-position:250% center;}
+}
+
+/* Credits travel from bottom to top */
+
+@keyframes creditsRoll {
+  0% {
+    top: 100%;
+    transform: translateY(0);
+  }
+
+  100% {
+    top: 0;
+    transform: translateY(-115%);
+  }
+}
+
+@keyframes fadeIn {
+  from {opacity:0;}
+  to {opacity:1;}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- WELCOME -->
+
+<section id="welcome" class="screen">
+
+  <div class="card">
+
+    <div class="heart">❤️</div>
+
+    <h1>Your Friend Memories</h1>
+
+    <p>
+      You and Your Friend Memories 🥹
+      <br><br>
+      Do you want to look at our beautiful memories?
+      <br>
+      Some moments are unforgettable!
+    </p>
+
+    <div class="buttons">
+      <button onclick="start()">Yes ❤️</button>
+      <button onclick="start()">Of Course 😁</button>
+    </div>
+
+    <p style="margin-top:25px;font-size:13px">
+      Made with ❤️ for my best friend 🇳🇵
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- PHOTO SLIDESHOW -->
+
+<section id="photoScreen" class="screen">
+
+  <div class="fireTitle">🔥 FREE FIRE MAX 🔥</div>
+
+  <img id="memoryPhoto"
+       src="photo1.jpg"
+       alt="Friendship memory">
+
+  <div class="photoBottom">
+
+    <h2 id="photoCaption">
+      OUR FIRST MEMORY ❤️
+    </h2>
+
+    <p>BEST FRIENDS FOREVER 🇳🇵😁</p>
+
+    <div class="fireTitle" style="margin-top:15px">
+      FREE FIRE LEGEND 🔥
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- VIDEO -->
+
+<section id="videoScreen" class="screen">
+
+  <h2>❤️ BEST FRIENDS FOREVER ❤️</h2>
+
+  <p style="margin-bottom:18px">
+    Our memories will always be special 🇳🇵
+  </p>
+
+  <video id="myVideo"
+         controls
+         playsinline
+         preload="auto">
+
+    <source src="video.mp4" type="video/mp4">
+
+    Your browser does not support video.
+  </video>
+
+  <button id="soundButton" onclick="enableSound()">
+    🔊 Turn On Video Sound
+  </button>
+
+</section>
+
+
+<!-- ROLLING MOVIE CREDITS -->
+
+<section id="creditsScreen" class="screen">
+
+  <div class="creditsGlow"></div>
+
+  <div class="creditsTrack">
+
+    <div class="smallTitle">
+      A SPECIAL FRIENDSHIP STORY
+    </div>
+
+    <div class="crown">👑</div>
+
+    <div class="mainNames">
+      SURAZ
+      <br>
+      ×
+      <br>
+      URSHA
+    </div>
+
+    <div class="ayush">
+      (AYUSH)
+    </div>
+
+    <div class="line"></div>
+
+    <div class="duoTitle">
+      BEST DUO
+      <br>
+      IN FREE FIRE
+    </div>
+
+    <div class="duoSub">
+      TWO PLAYERS · ONE LEGEND
+    </div>
+
+    <div class="flag">
+      🇳🇵 ❤️ 🔥
+    </div>
+
+    <div class="line"></div>
+
+    <div class="friendship">
+      FRIENDSHIP NEVER ENDS
+    </div>
+
+    <div class="endLabel">
+      THE END
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- FINAL SCREEN -->
+
+<section id="finalEnd" class="screen">
+
+  <div style="font-size:55px">👑</div>
+
+  <h2>THE END</h2>
+
+  <p>SURAZ × URSHA ❤️</p>
+
+  <button id="again" onclick="location.reload()">
+    ↻ WATCH AGAIN
+  </button>
+
+</section>
+
+
+<script>
+
+const screens = document.querySelectorAll(".screen");
+
+const welcome = document.getElementById("welcome");
+const photoScreen = document.getElementById("photoScreen");
+const videoScreen = document.getElementById("videoScreen");
+const creditsScreen = document.getElementById("creditsScreen");
+const finalEnd = document.getElementById("finalEnd");
+
+const img = document.getElementById("memoryPhoto");
+const caption = document.getElementById("photoCaption");
+const video = document.getElementById("myVideo");
+
+let photoTimer1;
+let photoTimer2;
+let creditsTimer;
+
+function showScreen(screen) {
+  screens.forEach(s => s.style.display = "none");
+  screen.style.display = "flex";
+}
+
+function start() {
+
+  clearTimeout(photoTimer1);
+  clearTimeout(photoTimer2);
+  clearTimeout(creditsTimer);
+
+  video.pause();
+  video.currentTime = 0;
+
+  showScreen(photoScreen);
+
+  // FIRST PHOTO: 5 SECONDS
+
+  img.src = "photo1.jpg";
+  caption.textContent = "OUR FIRST MEMORY ❤️";
+
+  // SECOND PHOTO: AFTER 5 SECONDS
+
+  photoTimer1 = setTimeout(() => {
+
+    img.src = "photo2.jpg";
+    caption.textContent = "OUR SPECIAL MEMORY 🥹";
+
+  }, 5000);
+
+  // VIDEO: AFTER 10 SECONDS
+
+  photoTimer2 = setTimeout(() => {
+
+    showScreen(videoScreen);
+
+    video.currentTime = 0;
+    video.muted = true;
+
+    video.play().catch(() => {
+      // Press the video play button if autoplay is blocked.
+    });
+
+  }, 10000);
+
+}
+
+
+// SOUND BUTTON
+
+function enableSound() {
+
+  video.muted = false;
+  video.volume = 1;
+
+  video.play().catch(() => {
+    alert("Please press the video play button.");
+  });
+
+  document.getElementById("soundButton").textContent =
+    "🔊 SOUND ON";
+
+}
+
+
+// VIDEO FINISHED -> MOVIE CREDITS
+
+video.addEventListener("ended", function() {
+
+  video.pause();
+
+  showScreen(creditsScreen);
+
+  // Let the credits scroll completely off-screen.
+  // Then show the final THE END screen.
+
+  creditsTimer = setTimeout(() => {
+
+    showScreen(finalEnd);
+
+  }, 22000);
+
+});
+
+</script>
+
+</body>
+</html>
+
